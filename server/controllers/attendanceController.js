@@ -22,6 +22,19 @@ const markAttendance = async (req, res) => {
             });
         }
 
+        const existingAttendance = await Attendance.findOne({
+            student,
+            date
+        });
+
+        if (existingAttendance) {
+            return res.status(409).json({
+                success: false,
+                message: 'Attendance already recorded for this student on this date',
+                data: {}
+            });
+        }
+
         const attendance = await Attendance.create({
             student,
             date,
@@ -34,6 +47,14 @@ const markAttendance = async (req, res) => {
             data: attendance
         });
     } catch (error) {
+        if (error.code === 11000) {
+            return res.status(409).json({
+                success: false,
+                message: 'Attendance already recorded for this student on this date',
+                data: {}
+            });
+        }
+
         return res.status(500).json({
             success: false,
             message: 'Failed to mark attendance',
