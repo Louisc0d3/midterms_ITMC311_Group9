@@ -1,75 +1,69 @@
 ﻿import { useState } from 'react'
+import { login } from '../api'
 import '../styles/TeacherLogin.css'
 
-function TeacherLogin() {
-  const [username, setUsername] = useState('')
+function TeacherLogin({ onLoginSuccess }) {
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-  const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
     setError('')
-    setSubmitted(false)
 
-    if (!username.trim() || !password) {
-      setError('Please enter your username and password.')
+    if (!email || !password) {
+      setError('Email and password are required.')
       return
     }
 
-    setSubmitted(true)
+    try {
+      setLoading(true)
+      const result = await login(email, password)
+
+      if (result.data?.user?.role && result.data.user.role !== 'user') {
+        setError('Login successful.')
+      }
+
+      onLoginSuccess?.(result.data.user)
+    } catch (requestError) {
+      setError(requestError.message)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <main className="teacher-login-page">
-      <section className="teacher-login-card" aria-labelledby="teacher-login-title">
-        <div className="teacher-login-header">
-          <p className="teacher-login-label">Student Attendance System</p>
-          <h1 id="teacher-login-title">Teacher Login</h1>
-          <p>Sign in to manage student attendance.</p>
-        </div>
+      <section className="teacher-login-card">
+        <h1>Teacher Login</h1>
+        <p>Sign in to manage student attendance.</p>
 
-        <form className="teacher-login-form" onSubmit={handleSubmit}>
-          <div className="form-field">
-            <label htmlFor="username">Username</label>
-            <input
-              id="username"
-              name="username"
-              type="text"
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
-              autoComplete="username"
-              placeholder="Enter your username"
-            />
-          </div>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="teacher-email">Email</label>
+          <input
+            id="teacher-email"
+            type="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+            placeholder="Enter your email"
+            required
+          />
 
-          <div className="form-field">
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              autoComplete="current-password"
-              placeholder="Enter your password"
-            />
-          </div>
+          <label htmlFor="teacher-password">Password</label>
+          <input
+            id="teacher-password"
+            type="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            placeholder="Enter your password"
+            required
+          />
 
-          {error && (
-            <p className="login-message login-error" role="alert">
-              {error}
-            </p>
-          )}
+          {error && <p className="teacher-login-error">{error}</p>}
 
-          {submitted && (
-            <p className="login-message login-success" role="status">
-              Login form submitted successfully.
-            </p>
-          )}
-
-          <button type="submit" className="teacher-login-button">
-            Login
+          <button type="submit" disabled={loading}>
+            {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
       </section>
