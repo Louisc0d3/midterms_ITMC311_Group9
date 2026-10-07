@@ -1,6 +1,7 @@
 ﻿const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
+const studentRoutes = require('./routes/studentRoutes'); // STU-BE-02
 
 dotenv.config();
 
@@ -12,6 +13,8 @@ app.use(cors({
 }));
 
 app.use(express.json());
+
+app.use('/api/students', studentRoutes); // STU-BE-02
 
 app.get('/api/health', (req, res) => {
     res.json({
