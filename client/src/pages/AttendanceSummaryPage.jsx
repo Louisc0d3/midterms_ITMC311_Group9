@@ -1,4 +1,5 @@
 ﻿import AttendanceSummary from '../components/AttendanceSummary';
+import '../styles/StudentResponsive.css';
 
 function AttendanceSummaryPage() {
   const summary = {
@@ -8,17 +9,15 @@ function AttendanceSummaryPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-100 px-4 py-10">
-      <div className="mx-auto max-w-5xl">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">
-            Attendance Summary
-          </h1>
+    <main className="student-page">
+      <div className="student-container">
+        <header className="student-section-header">
+          <h1 className="student-heading">Attendance Summary</h1>
 
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="student-subheading">
             Review an overview of your attendance.
           </p>
-        </div>
+        </header>
 
         <AttendanceSummary
           total={summary.total}

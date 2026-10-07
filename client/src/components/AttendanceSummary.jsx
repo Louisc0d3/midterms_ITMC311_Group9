@@ -1,4 +1,6 @@
-﻿function AttendanceSummary({
+﻿import '../styles/StudentResponsive.css';
+
+function AttendanceSummary({
   total = 0,
   present = 0,
   absent = 0,
@@ -7,45 +9,25 @@
     total > 0 ? Math.round((present / total) * 100) : 0;
 
   return (
-    <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-      <div className="rounded-lg bg-white p-5 shadow">
-        <p className="text-sm font-medium text-gray-500">
-          Total Records
-        </p>
-
-        <p className="mt-2 text-3xl font-bold text-gray-900">
-          {total}
-        </p>
+    <section className="student-summary-grid">
+      <div className="student-summary-card">
+        <p className="student-summary-label">Total Records</p>
+        <p className="student-summary-value">{total}</p>
       </div>
 
-      <div className="rounded-lg bg-white p-5 shadow">
-        <p className="text-sm font-medium text-gray-500">
-          Present
-        </p>
-
-        <p className="mt-2 text-3xl font-bold text-gray-900">
-          {present}
-        </p>
+      <div className="student-summary-card">
+        <p className="student-summary-label">Present</p>
+        <p className="student-summary-value">{present}</p>
       </div>
 
-      <div className="rounded-lg bg-white p-5 shadow">
-        <p className="text-sm font-medium text-gray-500">
-          Absent
-        </p>
-
-        <p className="mt-2 text-3xl font-bold text-gray-900">
-          {absent}
-        </p>
+      <div className="student-summary-card">
+        <p className="student-summary-label">Absent</p>
+        <p className="student-summary-value">{absent}</p>
       </div>
 
-      <div className="rounded-lg bg-white p-5 shadow">
-        <p className="text-sm font-medium text-gray-500">
-          Attendance Rate
-        </p>
-
-        <p className="mt-2 text-3xl font-bold text-gray-900">
-          {attendanceRate}%
-        </p>
+      <div className="student-summary-card">
+        <p className="student-summary-label">Attendance Rate</p>
+        <p className="student-summary-value">{attendanceRate}%</p>
       </div>
     </section>
   );
