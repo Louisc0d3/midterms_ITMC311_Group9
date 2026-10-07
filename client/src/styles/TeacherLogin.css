@@ -5,6 +5,7 @@
   justify-content: center;
   padding: 24px;
   background: #f4f6f8;
+  color: #344054;
 }
 
 .teacher-login-card {
@@ -25,6 +26,7 @@
   margin: 0 0 8px;
   font-size: 13px;
   font-weight: 700;
+  color: #667085;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -32,6 +34,8 @@
 .teacher-login-header h1 {
   margin: 0 0 8px;
   font-size: 30px;
+  font-weight: 600;
+  color: #1d2939;
 }
 
 .teacher-login-header p:last-child {
@@ -54,6 +58,7 @@
 .form-field label {
   font-size: 14px;
   font-weight: 600;
+  color: #475467;
 }
 
 .form-field input {
@@ -62,8 +67,14 @@
   padding: 12px 14px;
   border: 1px solid #d0d5dd;
   border-radius: 8px;
+  background: #ffffff;
+  color: #1d2939;
   font: inherit;
   outline: none;
+}
+
+.form-field input::placeholder {
+  color: #98a2b3;
 }
 
 .form-field input:focus {
@@ -85,6 +96,11 @@
 
 .teacher-login-button:hover {
   background: #344054;
+}
+
+.teacher-login-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .login-message {
