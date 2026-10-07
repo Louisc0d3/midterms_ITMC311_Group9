@@ -1,4 +1,5 @@
 ﻿import { useState } from 'react';
+import '../styles/StudentResponsive.css';
 
 function StudentLoginPage() {
   const [formData, setFormData] = useState({
@@ -29,72 +30,63 @@ function StudentLoginPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-100 px-4 py-10">
-      <div className="mx-auto max-w-md rounded-lg bg-white p-6 shadow">
-        <h1 className="text-2xl font-bold text-gray-900">
-          Student Login
-        </h1>
+    <main className="student-page">
+      <div className="student-container student-container--narrow">
+        <section className="student-card">
+          <h1 className="student-heading">Student Login</h1>
 
-        <p className="mt-2 text-sm text-gray-600">
-          Sign in to view your attendance.
-        </p>
+          <p className="student-subheading">
+            Sign in to view your attendance.
+          </p>
 
-        <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-          <div>
-            <label
-              htmlFor="username"
-              className="mb-1 block text-sm font-medium text-gray-700"
-            >
-              Username
-            </label>
+          <form onSubmit={handleSubmit} className="student-form">
+            <div className="student-field">
+              <label htmlFor="username" className="student-label">
+                Username
+              </label>
 
-            <input
-              id="username"
-              name="username"
-              type="text"
-              value={formData.username}
-              onChange={handleChange}
-              autoComplete="username"
-              required
-              placeholder="Enter username"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-gray-500"
-            />
-          </div>
+              <input
+                id="username"
+                name="username"
+                type="text"
+                value={formData.username}
+                onChange={handleChange}
+                autoComplete="username"
+                required
+                placeholder="Enter username"
+                className="student-input"
+              />
+            </div>
 
-          <div>
-            <label
-              htmlFor="password"
-              className="mb-1 block text-sm font-medium text-gray-700"
-            >
-              Password
-            </label>
+            <div className="student-field">
+              <label htmlFor="password" className="student-label">
+                Password
+              </label>
 
-            <input
-              id="password"
-              name="password"
-              type="password"
-              value={formData.password}
-              onChange={handleChange}
-              autoComplete="current-password"
-              required
-              placeholder="Enter password"
-              className="w-full rounded-md border border-gray-300 px-3 py-2 outline-none focus:border-gray-500"
-            />
-          </div>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                value={formData.password}
+                onChange={handleChange}
+                autoComplete="current-password"
+                required
+                placeholder="Enter password"
+                className="student-input"
+              />
+            </div>
 
-          {message && (
-            <p role="status" className="text-sm text-gray-700">
-              {message}
-            </p>
-          )}
+            {message && (
+              <p role="status" className="student-message">
+                {message}
+              </p>
+            )}
 
-          <button
-            type="submit"
-            className="w-full rounded-md bg-gray-900 px-4 py-2 font-medium text-white hover:bg-gray-700"
-          >
-            Login
-          </button>
-        </form>
+            <button type="submit" className="student-button">
+              Login
+            </button>
+          </form>
+        </section>
       </div>
     </main>
   );
