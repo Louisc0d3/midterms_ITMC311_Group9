@@ -95,7 +95,30 @@ const updateAttendance = async (req, res) => {
     }
 };
 
+const getAttendance = async (req, res) => {
+    try {
+        const attendance = await Attendance.find()
+            .populate('student')
+            .sort({ date: -1 });
+
+        return res.status(200).json({
+            success: true,
+            message: 'Attendance records retrieved successfully',
+            data: {
+                attendance
+            }
+        });
+    } catch (error) {
+        return res.status(500).json({
+            success: false,
+            message: 'Failed to retrieve attendance records',
+            errors: null
+        });
+    }
+};
+
 module.exports = {
     markAttendance,
-    updateAttendance
+    updateAttendance,
+    getAttendance
 };
