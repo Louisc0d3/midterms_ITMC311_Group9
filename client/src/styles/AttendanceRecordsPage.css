@@ -1,0 +1,88 @@
+﻿.attendance-records-page {
+  min-height: 100vh;
+  padding: 32px;
+  background: #f5f7fb;
+}
+
+.attendance-records-card {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.attendance-records-header {
+  margin-bottom: 20px;
+}
+
+.attendance-records-header h1 {
+  margin: 0 0 6px;
+  font-size: 28px;
+}
+
+.attendance-records-header p {
+  margin: 0;
+  color: #666666;
+}
+
+.attendance-records-empty {
+  padding: 32px;
+  text-align: center;
+  border: 1px dashed #cccccc;
+  border-radius: 8px;
+  color: #666666;
+}
+
+.attendance-record {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.attendance-record:last-child {
+  border-bottom: none;
+}
+
+.attendance-record-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.attendance-record-student {
+  font-weight: 600;
+}
+
+.attendance-record-date {
+  font-size: 14px;
+  color: #777777;
+}
+
+.attendance-record-status {
+  min-width: 80px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.attendance-record-status-present {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.attendance-record-status-late {
+  background: #fff8e1;
+  color: #f57f17;
+}
+
+.attendance-record-status-absent {
+  background: #ffebee;
+  color: #c62828;
+}
