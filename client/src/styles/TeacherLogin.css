@@ -1,0 +1,111 @@
+﻿.teacher-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: #f4f6f8;
+}
+
+.teacher-login-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 36px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+}
+
+.teacher-login-header {
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+.teacher-login-label {
+  margin: 0 0 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.teacher-login-header h1 {
+  margin: 0 0 8px;
+  font-size: 30px;
+}
+
+.teacher-login-header p:last-child {
+  margin: 0;
+  color: #667085;
+}
+
+.teacher-login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-field label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form-field input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  font: inherit;
+  outline: none;
+}
+
+.form-field input:focus {
+  border-color: #475467;
+  box-shadow: 0 0 0 3px rgba(71, 84, 103, 0.12);
+}
+
+.teacher-login-button {
+  width: 100%;
+  padding: 13px 16px;
+  border: 0;
+  border-radius: 8px;
+  background: #1d2939;
+  color: #ffffff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.teacher-login-button:hover {
+  background: #344054;
+}
+
+.login-message {
+  margin: -4px 0 0;
+  font-size: 14px;
+}
+
+.login-error {
+  color: #b42318;
+}
+
+.login-success {
+  color: #027a48;
+}
+
+@media (max-width: 480px) {
+  .teacher-login-page {
+    padding: 16px;
+  }
+
+  .teacher-login-card {
+    padding: 28px 20px;
+  }
+}
