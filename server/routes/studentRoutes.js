@@ -2,7 +2,8 @@
 
 const {
   getStudents,
-  getStudentAttendance
+  getStudentAttendance,
+  getAttendanceSummary
 } = require('../controllers/studentController');
 
 const authMiddleware = require('../middleware/authMiddleware');
@@ -10,6 +11,7 @@ const authMiddleware = require('../middleware/authMiddleware');
 const router = express.Router();
 
 router.get('/', authMiddleware, getStudents);
+router.get('/:id/attendance/summary', authMiddleware, getAttendanceSummary);
 router.get('/:id/attendance', authMiddleware, getStudentAttendance);
 
 module.exports = router;
