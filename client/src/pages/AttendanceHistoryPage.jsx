@@ -1,20 +1,19 @@
 ﻿import AttendanceHistory from '../components/AttendanceHistory';
+import '../styles/StudentResponsive.css';
 
 function AttendanceHistoryPage() {
   const attendanceRecords = [];
 
   return (
-    <main className="min-h-screen bg-gray-100 px-4 py-10">
-      <div className="mx-auto max-w-4xl">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">
-            Attendance History
-          </h1>
+    <main className="student-page">
+      <div className="student-container">
+        <header className="student-section-header">
+          <h1 className="student-heading">Attendance History</h1>
 
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="student-subheading">
             View your recorded attendance.
           </p>
-        </div>
+        </header>
 
         <AttendanceHistory records={attendanceRecords} />
       </div>
