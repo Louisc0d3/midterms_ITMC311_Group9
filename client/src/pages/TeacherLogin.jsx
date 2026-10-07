@@ -20,11 +20,6 @@ function TeacherLogin({ onLoginSuccess }) {
     try {
       setLoading(true)
       const result = await login(email, password)
-
-      if (result.data?.user?.role && result.data.user.role !== 'user') {
-        setError('Login successful.')
-      }
-
       onLoginSuccess?.(result.data.user)
     } catch (requestError) {
       setError(requestError.message)
@@ -36,33 +31,48 @@ function TeacherLogin({ onLoginSuccess }) {
   return (
     <main className="teacher-login-page">
       <section className="teacher-login-card">
-        <h1>Teacher Login</h1>
-        <p>Sign in to manage student attendance.</p>
+        <div className="teacher-login-header">
+          <p className="teacher-login-label">Teacher Portal</p>
+          <h1>Teacher Login</h1>
+          <p>Sign in to manage student attendance.</p>
+        </div>
 
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="teacher-email">Email</label>
-          <input
-            id="teacher-email"
-            type="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            placeholder="Enter your email"
-            required
-          />
+        <form className="teacher-login-form" onSubmit={handleSubmit}>
+          <div className="form-field">
+            <label htmlFor="teacher-email">Email</label>
+            <input
+              id="teacher-email"
+              type="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              placeholder="Enter your email"
+              required
+            />
+          </div>
 
-          <label htmlFor="teacher-password">Password</label>
-          <input
-            id="teacher-password"
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            placeholder="Enter your password"
-            required
-          />
+          <div className="form-field">
+            <label htmlFor="teacher-password">Password</label>
+            <input
+              id="teacher-password"
+              type="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+              placeholder="Enter your password"
+              required
+            />
+          </div>
 
-          {error && <p className="teacher-login-error">{error}</p>}
+          {error && (
+            <p className="login-message login-error">
+              {error}
+            </p>
+          )}
 
-          <button type="submit" disabled={loading}>
+          <button
+            className="teacher-login-button"
+            type="submit"
+            disabled={loading}
+          >
             {loading ? 'Logging in...' : 'Login'}
           </button>
         </form>
